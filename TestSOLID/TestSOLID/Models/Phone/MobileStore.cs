@@ -28,7 +28,7 @@ namespace TestSOLID.Models.Phone
             if (Validator.IsValid(phone))
             {
                 phones.Add(phone);
-                Saver.Save(phone, "store1.txt");
+                Saver.Save(phone, "store.txt");
                 Console.WriteLine("Finished successful");
             }
             else {
