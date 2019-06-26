@@ -7,6 +7,8 @@ namespace TestSOLID.Models.Phone
 {
     class MobileStore
     {
+
+
         List<Phone> phones = new List<Phone>();
 
         IPhoneReader Reader { get; set; }
