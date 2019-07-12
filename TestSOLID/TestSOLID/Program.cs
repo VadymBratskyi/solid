@@ -16,11 +16,6 @@ namespace TestSOLID
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            Book book = new Book(new Models.DependencyInversion.ConsolePrinter());
-            book.Print();
-            book.Printer = new HtmlPrinter();
-            book.Print();
-
             //Rectangle r = new Square();          
             //Console.WriteLine(TestRectangleArea(r));
 
