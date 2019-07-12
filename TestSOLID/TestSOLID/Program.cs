@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using TestSOLID.Models;
+using TestSOLID.Models.DependencyInversion;
 using TestSOLID.Models.LiscovSubsitutions;
 using TestSOLID.Models.OpenClose;
 using TestSOLID.Models.OpenClose.Strategy;
@@ -14,6 +15,11 @@ namespace TestSOLID
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
+
+            Book book = new Book(new Models.DependencyInversion.ConsolePrinter());
+            book.Print();
+            book.Printer = new HtmlPrinter();
+            book.Print();
 
             //Rectangle r = new Square();          
             //Console.WriteLine(TestRectangleArea(r));
