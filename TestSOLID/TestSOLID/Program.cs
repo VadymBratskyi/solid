@@ -2,6 +2,7 @@
 using System.Text;
 using TestSOLID.Models;
 using TestSOLID.Models.DependencyInversion;
+using TestSOLID.Models.InterfaceSegregation.Phone;
 using TestSOLID.Models.LiscovSubsitutions;
 using TestSOLID.Models.OpenClose;
 using TestSOLID.Models.OpenClose.Strategy;
@@ -15,6 +16,16 @@ namespace TestSOLID
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
+
+
+
+
+            //Photograph photograph = new Photograph();
+            //Camera camera = new Camera();
+            //Models.InterfaceSegregation.Phone.Phone iphone = new Models.InterfaceSegregation.Phone.Phone();
+            //photograph.TakePhoto(iphone);
+            //photograph.TakePhoto(camera);
+
 
             //Rectangle r = new Square();          
             //Console.WriteLine(TestRectangleArea(r));
