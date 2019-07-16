@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Text;
 using TestSOLID.Models;
-using TestSOLID.Models.DependencyInversion;
-using TestSOLID.Models.InterfaceSegregation.Phone;
-using TestSOLID.Models.LiscovSubsitutions;
-using TestSOLID.Models.OpenClose;
-using TestSOLID.Models.OpenClose.Strategy;
-using TestSOLID.Models.OpenClose.TemplateMethod;
-using TestSOLID.Models.Phone;
+using TestSOLID.Models.SOLID.DependencyInversion;
+using TestSOLID.Models.SOLID.InterfaceSegregation.Phone;
+using TestSOLID.Models.SOLID.LiscovSubsitutions;
+using TestSOLID.Models.SOLID.OpenClose;
+using TestSOLID.Models.SOLID.SingleResponsibility.Phone;
+using TestSOLID.Models.SOLID.SingleResponsibility.Report;
 
 namespace TestSOLID
 {
