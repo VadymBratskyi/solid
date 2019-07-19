@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Text;
+using System.Threading;
 using TestSOLID.Models;
+using TestSOLID.Models.Paterns.Observer.Bank;
+using TestSOLID.Models.Paterns.Singleton.Computer;
 using TestSOLID.Models.SOLID.DependencyInversion;
 using TestSOLID.Models.SOLID.InterfaceSegregation.Phone;
 using TestSOLID.Models.SOLID.LiscovSubsitutions;
@@ -16,6 +19,31 @@ namespace TestSOLID
         {
             Console.OutputEncoding = Encoding.UTF8;
 
+            Stock stock = new Stock();
+            Bank bank = new Bank("ЮнитБанк", stock);
+            Broker broker = new Broker("Иван Иваныч", stock);
+            // имитация торгов
+            stock.Market();
+            // брокер прекращает наблюдать за торгами
+            broker.StopTrade();
+            // имитация торгов
+            stock.Market();
+
+
+            //(new Thread(() =>
+            //{
+            //    Computer comp = new Computer();
+            //    comp.Lounch("windos 10");
+            //    Console.WriteLine(comp.OS.Name);
+            //})
+            //).Start();
+
+            //Computer comp = new Computer();
+            //comp.Lounch("windos 10");
+            //Console.WriteLine(comp.OS.Name);
+
+            //comp.OS = OS.getInstance("linux");
+            //Console.WriteLine(comp.OS.Name);
 
 
 
