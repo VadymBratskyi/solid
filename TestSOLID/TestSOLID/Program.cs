@@ -3,6 +3,8 @@ using System.Text;
 using System.Threading;
 using TestSOLID.Models;
 using TestSOLID.Models.Paterns.Observer.Bank;
+using TestSOLID.Models.Paterns.Observer.News;
+using TestSOLID.Models.Paterns.Observer.News.Widgets;
 using TestSOLID.Models.Paterns.Singleton.Computer;
 using TestSOLID.Models.SOLID.DependencyInversion;
 using TestSOLID.Models.SOLID.InterfaceSegregation.Phone;
@@ -19,15 +21,26 @@ namespace TestSOLID
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            Stock stock = new Stock();
-            Bank bank = new Bank("ЮнитБанк", stock);
-            Broker broker = new Broker("Иван Иваныч", stock);
-            // имитация торгов
-            stock.Market();
-            // брокер прекращает наблюдать за торгами
-            broker.StopTrade();
-            // имитация торгов
-            stock.Market();
+            var newsAgr = new NewsAggregator();
+
+            var twitterWidget = new TwitterWidget(newsAgr);
+            var lentaWidget = new LentaWidget(newsAgr);
+            var tvWidget = new TvWidget(newsAgr);
+
+            newsAgr.NotifyObserver();
+            Console.WriteLine();
+            newsAgr.NewNewsAvailable();
+
+
+            //Stock stock = new Stock();
+            //Bank bank = new Bank("ЮнитБанк", stock);
+            //Broker broker = new Broker("Иван Иваныч", stock);
+            //// имитация торгов
+            //stock.Market();
+            //// брокер прекращает наблюдать за торгами
+            //broker.StopTrade();
+            //// имитация торгов
+            //stock.Market();
 
 
             //(new Thread(() =>
