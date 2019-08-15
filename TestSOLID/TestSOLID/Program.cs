@@ -5,6 +5,8 @@ using TestSOLID.Models;
 using TestSOLID.Models.Paterns.Observer.Bank;
 using TestSOLID.Models.Paterns.Observer.News;
 using TestSOLID.Models.Paterns.Observer.News.Widgets;
+using TestSOLID.Models.Paterns.Observer.News2;
+using TestSOLID.Models.Paterns.Observer.News2.Widgets;
 using TestSOLID.Models.Paterns.Singleton.Computer;
 using TestSOLID.Models.SOLID.DependencyInversion;
 using TestSOLID.Models.SOLID.InterfaceSegregation.Phone;
@@ -21,15 +23,29 @@ namespace TestSOLID
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            var newsAgr = new NewsAggregator();
+            var newArgs2 = new NewsAggregator2();
 
-            var twitterWidget = new TwitterWidget(newsAgr);
-            var lentaWidget = new LentaWidget(newsAgr);
-            var tvWidget = new TvWidget(newsAgr);
+            var twitterWidget2 = new TwitterWidget2();
+            var lentaWidget2 = new LentaWidget2();
+            var tvWidget2 = new TvWidget2();
 
-            newsAgr.NotifyObserver();
+            newArgs2.NewsChange += twitterWidget2.Update;
+            newArgs2.NewsChange += lentaWidget2.Update;
+            newArgs2.NewsChange += tvWidget2.Update;
+
+            newArgs2.NewNewsAvailable();
             Console.WriteLine();
-            newsAgr.NewNewsAvailable();
+            newArgs2.NewNewsAvailable();
+
+            //var newsAgr = new NewsAggregator();
+
+            //var twitterWidget = new TwitterWidget(newsAgr);
+            //var lentaWidget = new LentaWidget(newsAgr);
+            //var tvWidget = new TvWidget(newsAgr);
+
+            //newsAgr.NotifyObserver();
+            //Console.WriteLine();
+            //newsAgr.NewNewsAvailable();
 
 
             //Stock stock = new Stock();
