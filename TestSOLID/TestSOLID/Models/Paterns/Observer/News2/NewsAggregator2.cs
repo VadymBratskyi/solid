@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TestSOLID.Models.Paterns.Observer.News.Widgets;
+using TestSOLID.Models.Paterns.Observer.News2.Widgets;
 
 namespace TestSOLID.Models.Paterns.Observer.News2
 {
@@ -20,7 +21,7 @@ namespace TestSOLID.Models.Paterns.Observer.News2
 
     public delegate void NewsChangedEventHandler(object sender, NewsEventArgs2 args);
     
-    public class NewsAggregator2
+    public class NewsAggregator2 : ISubjectNews2
     {
         private static Random random;
 
@@ -30,7 +31,7 @@ namespace TestSOLID.Models.Paterns.Observer.News2
 
         public event NewsChangedEventHandler NewsChange;
 
-        public void NewNewsAvailable() {
+        private void NewNewsAvailable() {
 
             var twitter = GetTwitter();
             var lenta = GetLenta();
@@ -75,6 +76,21 @@ namespace TestSOLID.Models.Paterns.Observer.News2
                 };
 
             return arr[random.Next(0, 2)];
+        }
+
+        public void RegisterObserver(IObserverNews2 observer)
+        {
+            NewsChange += observer.Update;
+        }
+
+        public void RemoveObserver(IObserverNews2 observer)
+        {
+            NewsChange -= observer.Update;
+        }
+
+        public void NotifyObserver()
+        {
+            NewNewsAvailable();
         }
     }
 }

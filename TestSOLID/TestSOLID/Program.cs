@@ -25,17 +25,13 @@ namespace TestSOLID
 
             var newArgs2 = new NewsAggregator2();
 
-            var twitterWidget2 = new TwitterWidget2();
-            var lentaWidget2 = new LentaWidget2();
-            var tvWidget2 = new TvWidget2();
+            var twitterWidget2 = new TwitterWidget2(newArgs2);
+            var lentaWidget2 = new LentaWidget2(newArgs2);
+            var tvWidget2 = new TvWidget2(newArgs2);
 
-            newArgs2.NewsChange += twitterWidget2.Update;
-            newArgs2.NewsChange += lentaWidget2.Update;
-            newArgs2.NewsChange += tvWidget2.Update;
-
-            newArgs2.NewNewsAvailable();
+            newArgs2.NotifyObserver();
             Console.WriteLine();
-            newArgs2.NewNewsAvailable();
+            newArgs2.NotifyObserver();
 
             //var newsAgr = new NewsAggregator();
 
@@ -45,7 +41,7 @@ namespace TestSOLID
 
             //newsAgr.NotifyObserver();
             //Console.WriteLine();
-            //newsAgr.NewNewsAvailable();
+            //newsAgr.NotifyObserver();
 
 
             //Stock stock = new Stock();
