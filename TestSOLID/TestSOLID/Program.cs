@@ -2,6 +2,8 @@
 using System.Text;
 using System.Threading;
 using TestSOLID.Models;
+using TestSOLID.Models.Paterns.Factory.Building;
+using TestSOLID.Models.Paterns.Factory.Cars;
 using TestSOLID.Models.Paterns.Observer.Bank;
 using TestSOLID.Models.Paterns.Observer.News;
 using TestSOLID.Models.Paterns.Observer.News.Widgets;
@@ -23,15 +25,34 @@ namespace TestSOLID
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            var newArgs2 = new NewsAggregator2();
+            CarFactory factory = new BmwFactory("BMW Factory");
+            Car car1 = factory.BuildCar("i3");
+            Car car2 = factory.BuildCar("m4");
 
-            var twitterWidget2 = new TwitterWidget2(newArgs2);
-            var lentaWidget2 = new LentaWidget2(newArgs2);
-            var tvWidget2 = new TvWidget2(newArgs2);
+            factory = new ToyotaFactory("Toyota Factory");
+            Car car3 = factory.BuildCar("rav 4");
+            Car car4 = factory.BuildCar("corola");
+            Car car5 = factory.BuildCar("camry");
 
-            newArgs2.NotifyObserver();
             Console.WriteLine();
-            newArgs2.NotifyObserver();
+            car5.Configuration();
+
+            //Developer dev = new PanelDeveloper("OOO KirpichBuild");
+            //House house = dev.CreateHouse();
+
+            //dev = new WoodDeveloper("OOO DerevoBuild");
+            //House house2 = dev.CreateHouse();
+
+
+            //var newArgs2 = new NewsAggregator2();
+
+            //var twitterWidget2 = new TwitterWidget2(newArgs2);
+            //var lentaWidget2 = new LentaWidget2(newArgs2);
+            //var tvWidget2 = new TvWidget2(newArgs2);
+
+            //newArgs2.NotifyObserver();
+            //Console.WriteLine();
+            //newArgs2.NotifyObserver();
 
             //var newsAgr = new NewsAggregator();
 
