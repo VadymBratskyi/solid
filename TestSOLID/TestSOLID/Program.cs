@@ -2,6 +2,7 @@
 using System.Text;
 using System.Threading;
 using TestSOLID.Models;
+using TestSOLID.Models.Paterns.Decorator.Pizza;
 using TestSOLID.Models.Paterns.Factory.Building;
 using TestSOLID.Models.Paterns.Factory.Cars;
 using TestSOLID.Models.Paterns.Observer.Bank;
@@ -25,17 +26,34 @@ namespace TestSOLID
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            CarFactory factory = new BmwFactory("BMW Factory");
-            Car car1 = factory.BuildCar("i3");
-            Car car2 = factory.BuildCar("m4");
+            Pizza pizza1 = new ItalianPizza();
+            pizza1 = new TomatoPizza(pizza1); // итальянская пицца с томатами
+            Console.WriteLine("Название: {0}", pizza1.Name);
+            Console.WriteLine("Цена: {0}", pizza1.GetCost());
 
-            factory = new ToyotaFactory("Toyota Factory");
-            Car car3 = factory.BuildCar("rav 4");
-            Car car4 = factory.BuildCar("corola");
-            Car car5 = factory.BuildCar("camry");
+            Pizza pizza2 = new ItalianPizza();
+            pizza2 = new CheesePizza(pizza2);// итальянская пиццы с сыром
+            Console.WriteLine("Название: {0}", pizza2.Name);
+            Console.WriteLine("Цена: {0}", pizza2.GetCost());
 
-            Console.WriteLine();
-            car5.Configuration();
+            Pizza pizza3 = new BulgerianPizza();
+            pizza3 = new TomatoPizza(pizza3);
+            pizza3 = new CheesePizza(pizza3);// болгарская пиццы с томатами и сыром
+            Console.WriteLine("Название: {0}", pizza3.Name);
+            Console.WriteLine("Цена: {0}", pizza3.GetCost());
+
+
+            //CarFactory factory = new BmwFactory("BMW Factory");
+            //Car car1 = factory.BuildCar("i3");
+            //Car car2 = factory.BuildCar("m4");
+
+            //factory = new ToyotaFactory("Toyota Factory");
+            //Car car3 = factory.BuildCar("rav 4");
+            //Car car4 = factory.BuildCar("corola");
+            //Car car5 = factory.BuildCar("camry");
+
+            //Console.WriteLine();
+            //car2.Configuration();
 
             //Developer dev = new PanelDeveloper("OOO KirpichBuild");
             //House house = dev.CreateHouse();

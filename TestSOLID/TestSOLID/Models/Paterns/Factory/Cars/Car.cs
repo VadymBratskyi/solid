@@ -15,7 +15,8 @@ namespace TestSOLID.Models.Paterns.Factory.Cars
         protected string Body { get; set; }
         public Car(string name, string model) {
             Name = name;
-            Model = model;            
+            Model = model;
+            Body = "sedan";
         }
         public abstract void Configuration();      
 
